@@ -20,20 +20,23 @@ public class MineSweeper extends JFrame {
     private MineSweeperScoreBoard scoreBoardPanel;
     private MineSweeperBoard boardPanel;
     private GameMenu gameMenu;
+    private AccessibilityMenu accessibilityMenu;
     private HelpMenu helpMenu;
     private boolean gameOver;
 
     public MineSweeper() {
         model = new MineSweeperModel();
         scoreBoardPanel = new MineSweeperScoreBoard(model);
-        boardPanel = new MineSweeperBoard(model);
+        boardPanel = new MineSweeperBoard(this, model);
         gameMenu = new GameMenu(this, model);
+        accessibilityMenu = new AccessibilityMenu(this, model);
         helpMenu = new HelpMenu(this);
         cp = getContentPane();
         gameOver = false;
 
         JMenuBar menuBar = new JMenuBar();
         menuBar.add(gameMenu);
+        menuBar.add(accessibilityMenu);
         menuBar.add(helpMenu);
 
         cp.add(scoreBoardPanel, BorderLayout.NORTH);
@@ -42,7 +45,7 @@ public class MineSweeper extends JFrame {
         this.setLocation(100, 100);
         this.setTitle("Minesweeper");
         this.setJMenuBar(menuBar);
-        this.setSize(model.getColumns() * 20, model.getRows() * 20 + 80);
+        this.setSize((int)(model.getColumns() * 20), (int)(model.getRows() * 20 + 80));
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -53,7 +56,7 @@ public class MineSweeper extends JFrame {
         gameOver = false;
         model = new MineSweeperModel();
         scoreBoardPanel = new MineSweeperScoreBoard(model);
-        boardPanel = new MineSweeperBoard(model);
+        boardPanel = new MineSweeperBoard(this, model);
         cp.add(scoreBoardPanel, BorderLayout.NORTH);
         cp.add(boardPanel, BorderLayout.CENTER);
         this.setResizable(true);
@@ -68,13 +71,18 @@ public class MineSweeper extends JFrame {
         gameOver = false;
         model = new MineSweeperModel(rows, columns, mines);
         scoreBoardPanel = new MineSweeperScoreBoard(model);
-        boardPanel = new MineSweeperBoard(model);
+        boardPanel = new MineSweeperBoard(this, model);
         cp.add(scoreBoardPanel, BorderLayout.NORTH);
         cp.add(boardPanel, BorderLayout.CENTER);
         this.setResizable(true);
         this.setSize(model.getColumns() * 20, model.getRows() * 20 + 80);
         this.setResizable(false);
         this.validate();
+    }
+
+    public void UpdateBoardSize(double sizeModifier) {
+        this.setSize((int)(model.getColumns() * 20 * sizeModifier), (int)(model.getRows() * 20 * sizeModifier + 80));
+        boardPanel.RedrawAllPieces(sizeModifier);
     }
 
     public Container getContainer()

@@ -10,6 +10,8 @@ public class MineSweeperModel {
     private int mines;
     private Timer t;
 
+    public double pieceSizeModifier = 1.0;
+
     public MineSweeperModel() {
         rows = 16;
         columns = 16;
@@ -34,6 +36,7 @@ public class MineSweeperModel {
     public int getRows(){ return rows;}
     public int getColumns(){ return columns; }
     public int getMines() { return mines; }
+    public double getSizeModifier() { return pieceSizeModifier; }
     public void setRows(int rows) { this.rows = rows; }
     public void setColumns(int columns) { this.columns = columns; }
     public void setMines(int mines) { this.mines = mines; }
