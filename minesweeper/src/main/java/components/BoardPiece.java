@@ -1,4 +1,4 @@
-package minesweeper.frontend.components;
+package minesweeper.src.main.java.components;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +20,7 @@ public class BoardPiece extends JButton {
         this.col = col;
         this.iconScale = scale;
         this.icons = icon;
-        ImageIcon unClicked = new ImageIcon("./minesweeper/images/facingDown.png");
+        ImageIcon unClicked = new ImageIcon("./minesweeper/src/main/resources/facingDown.png");
         this.setIcon(resizeIcon(unClicked, scale));
     }
 

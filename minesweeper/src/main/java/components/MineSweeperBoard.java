@@ -1,12 +1,23 @@
-package minesweeper.frontend.components;
+package minesweeper.src.main.java.components;
 
-import minesweeper.frontend.MineSweeper;
-import minesweeper.frontend.MineSweeperModel;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Random;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JWindow;
+import javax.swing.SwingUtilities;
+
+import minesweeper.src.main.java.MineSweeper;
+import minesweeper.src.main.java.MineSweeperModel;
 
 public class MineSweeperBoard extends JPanel implements ActionListener {
     /**
@@ -20,9 +31,9 @@ public class MineSweeperBoard extends JPanel implements ActionListener {
     private int bombsCounted;
     private MineSweeper ms;
 
-    public MineSweeperBoard(MineSweeper ms, MineSweeperModel m) {
-        this.model = m;
-        this.ms = ms;
+    public MineSweeperBoard(MineSweeper mineSweeper, MineSweeperModel model2) {
+        this.model = model2;
+        this.ms = mineSweeper;
         boardSizeX = model.getColumns();
         boardSizeY = model.getRows();
         pieces = new BoardPiece[boardSizeY][boardSizeX];

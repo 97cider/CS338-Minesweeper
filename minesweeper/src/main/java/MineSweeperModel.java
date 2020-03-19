@@ -1,9 +1,8 @@
-package minesweeper.frontend;
-
-import minesweeper.frontend.components.Icons;
-import minesweeper.frontend.components.MineSweeperScoreBoard;
+package minesweeper.src.main.java;
 
 import javax.swing.Timer;
+
+import minesweeper.src.main.java.components.Icons;
 
 public class MineSweeperModel {
     private int rows;

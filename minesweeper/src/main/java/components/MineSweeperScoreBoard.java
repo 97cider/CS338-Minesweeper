@@ -1,12 +1,18 @@
-package minesweeper.frontend.components;
+package minesweeper.src.main.java.components;
 
-import minesweeper.frontend.MineSweeper;
-import minesweeper.frontend.MineSweeperModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.Timer;
-import javax.swing.*;
+
+
+import minesweeper.src.main.java.MineSweeper;
+import minesweeper.src.main.java.MineSweeperModel;
 
 public class MineSweeperScoreBoard extends JPanel {
     private MineSweeperModel model;
@@ -15,9 +21,9 @@ public class MineSweeperScoreBoard extends JPanel {
     private JButton resetButton;
     private String MAX_TIME = "999";
 
-    public MineSweeperScoreBoard(MineSweeperModel m, MineSweeper mines) {
-        this.model = m;
-        this.ms = mines;
+    public MineSweeperScoreBoard(MineSweeperModel model2, MineSweeper mineSweeper) {
+        this.model = model2;
+        this.ms = mineSweeper;
         timer = new JTextField("" + 0);
         minesLeft = new JTextField("" + model.getMines());
         resetButton = new JButton("Reset");

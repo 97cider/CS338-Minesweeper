@@ -1,13 +1,23 @@
-package minesweeper.frontend.components;
+package minesweeper.src.main.java.components;
 
-import minesweeper.frontend.MineSweeper;
-import minesweeper.frontend.MineSweeperModel;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import minesweeper.src.main.java.MineSweeper;
+import minesweeper.src.main.java.MineSweeperModel;
 
 public class GameMenu extends JMenu {
     private MineSweeper ms;
@@ -23,10 +33,10 @@ public class GameMenu extends JMenu {
     private JMenuItem bestTimesMI;
     private JMenuItem exitMI;
 
-    public GameMenu(MineSweeper msweep, MineSweeperModel m) {
+    public GameMenu(MineSweeper mineSweeper, MineSweeperModel model2) {
         super("Game");
-        this.ms = msweep;
-        this.model = m;
+        this.ms = mineSweeper;
+        this.model = model2;
 
         newMI = new JMenuItem("New");
         newMI.addActionListener(new NewGameListener());
