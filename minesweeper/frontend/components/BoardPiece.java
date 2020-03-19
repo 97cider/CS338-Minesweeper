@@ -12,12 +12,14 @@ public class BoardPiece extends JButton {
     private boolean mine = false, flagged = false, uncovered = false;
     private int mines = 0;
     private double iconScale;
+    private Icons icons;
     
 
-    public BoardPiece(int row, int col, double scale) {
+    public BoardPiece(int row, int col, double scale, Icons icon) {
         this.row = row;
         this.col = col;
         this.iconScale = scale;
+        this.icons = icon;
         ImageIcon unClicked = new ImageIcon("./minesweeper/images/facingDown.png");
         this.setIcon(resizeIcon(unClicked, scale));
     }
@@ -40,25 +42,25 @@ public class BoardPiece extends JButton {
     public void UpdateIcon() {
         if(uncovered) {
             if(!mine) {
-                ImageIcon imTarget = new ImageIcon(Icons.GetIcon(mines));
+                ImageIcon imTarget = new ImageIcon(icons.GetIcon(mines));
                 this.setIcon(resizeIcon(imTarget, iconScale));
             }
             if(mine) {
-                ImageIcon imTarget = new ImageIcon(Icons.GetIcon(9));
+                ImageIcon imTarget = new ImageIcon(icons.GetIcon(9));
                 this.setIcon(resizeIcon(imTarget, iconScale));
             }
             if(flagged) {
-                ImageIcon imTarget = new ImageIcon(Icons.GetIcon(11));
+                ImageIcon imTarget = new ImageIcon(icons.GetIcon(11));
                 this.setIcon(resizeIcon(imTarget, iconScale));
             }
         }
         else {
             if(flagged) {
-                ImageIcon imTarget = new ImageIcon(Icons.GetIcon(11));
+                ImageIcon imTarget = new ImageIcon(icons.GetIcon(11));
                 this.setIcon(resizeIcon(imTarget, iconScale));
             }
             else {
-                ImageIcon imTarget = new ImageIcon(Icons.GetIcon(10));
+                ImageIcon imTarget = new ImageIcon(icons.GetIcon(10));
                 this.setIcon(resizeIcon(imTarget, iconScale));
             }
         }                

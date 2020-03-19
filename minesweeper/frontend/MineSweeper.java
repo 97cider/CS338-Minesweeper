@@ -23,6 +23,8 @@ public class MineSweeper extends JFrame {
     private AccessibilityMenu accessibilityMenu;
     private HelpMenu helpMenu;
     private boolean gameOver;
+    private double currentSizeModifier = 1.0;
+    private int currentSkinIndex = 0;
 
     public MineSweeper() {
         model = new MineSweeperModel();
@@ -54,7 +56,7 @@ public class MineSweeper extends JFrame {
         cp.remove(scoreBoardPanel);
         cp.remove(boardPanel);
         gameOver = false;
-        model = new MineSweeperModel();
+        model = new MineSweeperModel(currentSkinIndex);
         scoreBoardPanel = new MineSweeperScoreBoard(model);
         boardPanel = new MineSweeperBoard(this, model);
         cp.add(scoreBoardPanel, BorderLayout.NORTH);
@@ -69,7 +71,7 @@ public class MineSweeper extends JFrame {
         cp.remove(scoreBoardPanel);
         cp.remove(boardPanel);
         gameOver = false;
-        model = new MineSweeperModel(rows, columns, mines);
+        model = new MineSweeperModel(rows, columns, mines, currentSkinIndex);
         scoreBoardPanel = new MineSweeperScoreBoard(model);
         boardPanel = new MineSweeperBoard(this, model);
         cp.add(scoreBoardPanel, BorderLayout.NORTH);
@@ -80,7 +82,15 @@ public class MineSweeper extends JFrame {
         this.validate();
     }
 
+    public void UpdateBoardPallete(int index) {
+        this.currentSkinIndex = index;
+        this.model.setIconsIndex(index);
+        this.setSize((int)(model.getColumns() * 20 * currentSizeModifier), (int)(model.getRows() * 20 * currentSizeModifier + 80));
+        boardPanel.RedrawAllPieces(currentSizeModifier);
+    }
+
     public void UpdateBoardSize(double sizeModifier) {
+        this.currentSizeModifier = sizeModifier;
         this.setSize((int)(model.getColumns() * 20 * sizeModifier), (int)(model.getRows() * 20 * sizeModifier + 80));
         boardPanel.RedrawAllPieces(sizeModifier);
     }

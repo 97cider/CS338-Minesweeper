@@ -13,7 +13,7 @@ public class MineSweeperBoard extends JPanel implements ActionListener {
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	private MineSweeperModel model;
+    private MineSweeperModel model;
 	private BoardPiece[][] pieces;
     private int boardSizeX;
     private int boardSizeY;
@@ -29,7 +29,7 @@ public class MineSweeperBoard extends JPanel implements ActionListener {
 
         for (int i = 0; i < boardSizeY; i++) {
             for (int j = 0; j < boardSizeX; j++) {
-                pieces[i][j] = new BoardPiece(i, j, model.pieceSizeModifier);
+                pieces[i][j] = new BoardPiece(i, j, model.pieceSizeModifier, model.getIcons());
                 pieces[i][j].addMouseListener(new CustomMouseListener());
                 this.add(pieces[i][j]);
             }
