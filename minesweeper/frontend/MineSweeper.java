@@ -28,7 +28,7 @@ public class MineSweeper extends JFrame {
 
     public MineSweeper() {
         model = new MineSweeperModel();
-        scoreBoardPanel = new MineSweeperScoreBoard(model);
+        scoreBoardPanel = new MineSweeperScoreBoard(model, this);
         boardPanel = new MineSweeperBoard(this, model);
         gameMenu = new GameMenu(this, model);
         accessibilityMenu = new AccessibilityMenu(this, model);
@@ -57,7 +57,7 @@ public class MineSweeper extends JFrame {
         cp.remove(boardPanel);
         gameOver = false;
         model = new MineSweeperModel(currentSkinIndex);
-        scoreBoardPanel = new MineSweeperScoreBoard(model);
+        scoreBoardPanel = new MineSweeperScoreBoard(model, this);
         boardPanel = new MineSweeperBoard(this, model);
         cp.add(scoreBoardPanel, BorderLayout.NORTH);
         cp.add(boardPanel, BorderLayout.CENTER);
@@ -72,7 +72,7 @@ public class MineSweeper extends JFrame {
         cp.remove(boardPanel);
         gameOver = false;
         model = new MineSweeperModel(rows, columns, mines, currentSkinIndex);
-        scoreBoardPanel = new MineSweeperScoreBoard(model);
+        scoreBoardPanel = new MineSweeperScoreBoard(model, this);
         boardPanel = new MineSweeperBoard(this, model);
         cp.add(scoreBoardPanel, BorderLayout.NORTH);
         cp.add(boardPanel, BorderLayout.CENTER);

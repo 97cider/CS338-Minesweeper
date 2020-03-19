@@ -12,11 +12,8 @@ public class HelpMenu extends JMenu {
     public HelpMenu(MineSweeper msweep) {
         super("Help");
         this.ms = msweep;
-        JMenuItem contentsHI = new JMenuItem("Contents");
         JMenuItem aboutMI = new JMenuItem("About Minesweeper");
         aboutMI.addActionListener(new AboutListener());
-
-        this.add(contentsHI);
         this.addSeparator();
         this.add(aboutMI);
     }
